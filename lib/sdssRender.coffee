@@ -42,7 +42,7 @@ $ ->
   
 
   for particle in sdssData
-    pos = coordTransform particle[0], particle[1], particle[2]
+    pos = coordTransform particle[1], particle[0], particle[2]
     particleVertex = new THREE.Vertex ( new THREE.Vector3 pos[0]*200, pos[1]*200,pos[2]*200)
     particles.vertices.push particleVertex
 
