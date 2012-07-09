@@ -3,9 +3,9 @@ $ ->
 
 
   coordTransform = (ra,dec,redshift)=>
-    x = redshift * Math.sin(ra)*Math.cos(dec)
-    y = redshift * Math.sin(ra)*Math.sin(dec)
-    z = redshift * Math.cos(ra)
+    x = redshift * Math.sin(dec)*Math.cos(ra)
+    y = redshift * Math.sin(dec)*Math.sin(ra)
+    z = redshift * Math.cos(dec)
     [x,y,z]
 
   WIDTH = 1024
@@ -31,7 +31,7 @@ $ ->
 
   pMaterial = new THREE.ParticleBasicMaterial
     color : 0xFFFFF
-    size  : 1
+    size  : 0.5
 
   # pMaterial = new THREE.ParticleBasicMaterial
   #   color: 0xFFFFFF
@@ -42,7 +42,7 @@ $ ->
   
 
   for particle in sdssData
-    pos = coordTransform particle[1], particle[0], particle[2]
+    pos = coordTransform particle[0], particle[1], particle[2]
     particleVertex = new THREE.Vertex ( new THREE.Vector3 pos[0]*200, pos[1]*200,pos[2]*200)
     particles.vertices.push particleVertex
 
